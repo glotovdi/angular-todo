@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 90px);
+  justify-content: center;
+  align-items: center;
+}
+.todos__list {
+  border: 1px black solid;
+  border-radius: 5px;
+  width: 500px;
+}
+.list__item {
+  display: flex;
+  justify-content: space-between;
+  min-height: 25px;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px;
+}
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+.title {
+  margin-left: 5px;
+}
+
+.title__delete {
+  opacity: 0;
+  transition: 0.2s all linear;
+  justify-self: flex-end;
+}
+.list__item:hover .title__delete {
+  opacity: 1;
+  transition: 0.2s all linear;
+}
+.titles {
+  display: flex;
+}
+.add
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
