@@ -1,11 +1,14 @@
-<div class="wrapper">
-  <div class="todos__list">
-    <div *ngFor="let item of todos" class="list__item" [class.completed]="item.completed">
+<div class="wrapper default-primary-color ">
+  <div class="todos__list secondary-text-color light-primary-color ">
+    <div *ngFor="let item of todos"
+      class="list__item"
+      [class.completed]="item.completed">
       <div class="titles">
         <mat-checkbox [(ngModel)]="item.completed">{{item.title}}</mat-checkbox>
 
       </div>
-      <div class="title__delete" (click)="deletedTodo(item)">
+      <div class="title__delete"
+        (click)="deletedTodo(item)">
         <i class="material-icons">delete</i>
       </div>
     </div>
@@ -13,11 +16,15 @@
     <div class="add">
       <div class="input">
         <mat-form-field class="example-full-width">
-          <input matInput value="Введите задачу" [(ngModel)]="newTodo">
+          <input matInput
+            value="Введите задачу"
+            ngControl="testInput">
         </mat-form-field>
       </div>
       <div class="button">
-        <button mat-raised-button color="primary" (click)="addTodo()">добавить</button>
+        <button mat-raised-button
+          color="primary"
+          (click)="addTodo()">добавить</button>
       </div>
     </div>
 

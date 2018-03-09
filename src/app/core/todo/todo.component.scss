@@ -1,14 +1,18 @@
 .wrapper {
   display: flex;
   width: 100%;
-  height: calc(100vh - 90px);
+  height: 100vh;
   justify-content: center;
   align-items: center;
 }
 .todos__list {
-  border: 1px black solid;
+  //border: 1px black solid;
   border-radius: 5px;
   width: 500px;
+  padding: 10px 15px 0px;
+  background-color: white;
+  transform: translateY(-120px);
+  box-shadow: 0px 4px 12px 0px grey;
 }
 .list__item {
   display: flex;
@@ -38,9 +42,8 @@
 .titles {
   display: flex;
 }
-.add
-{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.add {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

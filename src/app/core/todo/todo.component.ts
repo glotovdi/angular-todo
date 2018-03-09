@@ -1,40 +1,38 @@
-import { Component, OnInit } from "@angular/core";
-import { TodosModel } from "../../models/todos.model";
-import { FormControl } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { TodosModel } from '../../models/todos.model';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: "app-todo",
-  templateUrl: "./todo.component.html",
-  styleUrls: ["./todo.component.css"]
+  selector: 'app-todo',
+  templateUrl: './todo.component.html',
+  styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
   todos: TodosModel[];
-  ctrl = new FormControl("some value");
+  test = new FormControl('testInput');
   newTodo: string;
   ngOnInit() {
     this.todos = [
       {
-        title: "Купить хлеб",
+        title: 'Изучить верстку',
         completed: false
       },
       {
-        title: "Купить майонез",
+        title: 'Изучить JS',
         completed: false
       },
       {
-        title: "Выкинуть мусор",
+        title: 'Изучить Angular',
         completed: true
       }
     ];
   }
 
-  public toogleStatus(todo): boolean {
-    console.log(this.todos);
+  public toogleStatus(todo: TodosModel): boolean {
     return (todo.completed = !todo.completed);
   }
 
-  public deletedTodo(todo): void {
-    debugger;
+  public deletedTodo(todo: TodosModel): void {
     const index = this.todos.indexOf(todo);
     if (index > -1) {
       this.todos.splice(index, 1);
@@ -42,7 +40,7 @@ export class TodoComponent implements OnInit {
   }
 
   public addTodo(): void {
-    this.todos.push({ title: this.newTodo, completed: false });
-    this.newTodo = "";
+    this.todos.push({ title: this.test.value, completed: false });
+    this.test.value.reset();
   }
 }
