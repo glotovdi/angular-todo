@@ -4,7 +4,8 @@
       class="list__item"
       [class.completed]="item.completed">
       <div class="titles">
-        <mat-checkbox [(ngModel)]="item.completed">{{item.title}}</mat-checkbox>
+        <mat-checkbox (change)="toggleItem(item , $event)"
+          [(ngModel)]="item.completed">{{item.title}}</mat-checkbox>
 
       </div>
       <div class="title__delete"
@@ -25,7 +26,7 @@
         <button mat-raised-button
           color="primary"
           (click)="addTodo()"
-          [disabled]="isEmptyInput">добавить</button>
+          [disabled]="isEmptyInput">Добавить</button>
       </div>
     </form>
 

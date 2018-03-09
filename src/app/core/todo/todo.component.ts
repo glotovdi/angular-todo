@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { TodosModel } from '../../models/todos.model';
 import { FormControl } from '@angular/forms';
 
@@ -18,9 +18,10 @@ export class TodoComponent implements OnInit {
       this.isEmptyInput = res === '' ? true : false;
     });
   }
-
   /**Выполненный таск */
   public toogleStatus(todo: TodosModel): boolean {
+    debugger;
+    this.updateLocalStorage();
     return (todo.completed = !todo.completed);
   }
 
@@ -30,7 +31,7 @@ export class TodoComponent implements OnInit {
     if (index > -1) {
       this.todos.splice(index, 1);
     }
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+    this.updateLocalStorage();
   }
 
   /**Добавить тудуха */
@@ -38,6 +39,17 @@ export class TodoComponent implements OnInit {
     this.todos.push({ title: this.inputTodo.value, completed: false });
     this.inputTodo.reset();
     this.isEmptyInput = true;
+    this.updateLocalStorage();
+  }
+
+  /** Перечеркнуть итем */
+  public toggleItem(todo: TodosModel, e: any): void {
+    todo.completed = e.checked;
+    this.updateLocalStorage();
+  }
+
+  /** обновить локал стор */
+  private updateLocalStorage(): void {
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 }
