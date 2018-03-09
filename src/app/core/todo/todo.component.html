@@ -13,20 +13,21 @@
       </div>
     </div>
 
-    <div class="add">
+    <form class="add">
       <div class="input">
         <mat-form-field class="example-full-width">
           <input matInput
-            value="Введите задачу"
-            ngControl="testInput">
+            placeholder="Введите задачу"
+            [formControl]="inputTodo">
         </mat-form-field>
       </div>
       <div class="button">
         <button mat-raised-button
           color="primary"
-          (click)="addTodo()">добавить</button>
+          (click)="addTodo()"
+          [disabled]="isEmptyInput">добавить</button>
       </div>
-    </div>
+    </form>
 
   </div>
 </div>

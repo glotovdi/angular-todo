@@ -6,8 +6,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  imports: [CommonModule, FormsModule, MatInputModule, MatCheckboxModule, MatButtonModule, BrowserAnimationsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
+  ],
   exports: [TodoComponent],
   declarations: [TodoComponent]
 })

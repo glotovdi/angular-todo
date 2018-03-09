@@ -8,39 +8,36 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todos: TodosModel[];
-  test = new FormControl('testInput');
-  newTodo: string;
+  todos: TodosModel[] = [];
+  inputTodo = new FormControl('');
+  isEmptyInput: boolean = true;
+
   ngOnInit() {
-    this.todos = [
-      {
-        title: 'Изучить верстку',
-        completed: false
-      },
-      {
-        title: 'Изучить JS',
-        completed: false
-      },
-      {
-        title: 'Изучить Angular',
-        completed: true
-      }
-    ];
+    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+    this.inputTodo.valueChanges.subscribe(res => {
+      this.isEmptyInput = res === '' ? true : false;
+    });
   }
 
+  /**Выполненный таск */
   public toogleStatus(todo: TodosModel): boolean {
     return (todo.completed = !todo.completed);
   }
 
+  /** Удалить тудуху */
   public deletedTodo(todo: TodosModel): void {
     const index = this.todos.indexOf(todo);
     if (index > -1) {
       this.todos.splice(index, 1);
     }
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 
+  /**Добавить тудуха */
   public addTodo(): void {
-    this.todos.push({ title: this.test.value, completed: false });
-    this.test.value.reset();
+    this.todos.push({ title: this.inputTodo.value, completed: false });
+    this.inputTodo.reset();
+    this.isEmptyInput = true;
+    localStorage.setItem('todos', JSON.stringify(this.todos));
   }
 }
